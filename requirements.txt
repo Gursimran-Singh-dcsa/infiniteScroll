@@ -1,0 +1,9 @@
+User must be logged in to see photos
+User should be autologin if he logs in again in b/w 24 hours.
+User can insert images.
+
+-------------------------------------------------------------------------------
+one can see who, when uploaded a specific image by click 'details' button appearing with image
+One should see bright/fade effect on hover
+
+--------------------------------------------------------------------
