@@ -11,6 +11,10 @@ const reducer = (state = initialState, action) => {
     case 'loginButtonClicked':
       newState.loggedIn = !newState.loggedIn;
       break;
+    case 'registerUser':
+      newState.user = action.value;
+      newState.loggedIn = true;
+      break;
     default:
       break;
   }

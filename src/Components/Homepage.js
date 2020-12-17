@@ -15,10 +15,10 @@ const Homepage = () => {
   }
 
   if (isLoggedIn(currentState)) {
-    return <div>You are logged in<LoginButton/></div>
-    } else {
-      return <div className="notLoggedIn"><div>Please Login first</div><LoginTemplate /></div>
-    }
+    return <div>You are logged in {currentState.user.name}<LoginButton/></div>
+  } else {
+    return <div className="notLoggedIn"><div>Please Login first</div><LoginTemplate /></div>
+  }
 }
 
 export default Homepage;
