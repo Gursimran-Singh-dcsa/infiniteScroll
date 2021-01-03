@@ -1,6 +1,6 @@
 import {useSelector, useDispatch} from 'react-redux';
 import {isLoggedIn} from '../Functions/common'
-import LoginTemplate from './loginTemplate';
+import RegistrationTemplate from './RegistrationTemplate';
 const Homepage = () => {
   const currentState = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -15,9 +15,9 @@ const Homepage = () => {
   }
 
   if (isLoggedIn(currentState)) {
-    return <div>You are logged in {currentState.user.name}<LoginButton/></div>
+    return <div>You are logged in {currentState.user.name} and your password is {currentState.user.password}<LoginButton/></div>
   } else {
-    return <div className="notLoggedIn"><div>Please Login first</div><LoginTemplate /></div>
+    return <div className="notLoggedIn"><div>Please Login first</div><RegistrationTemplate /></div>
   }
 }
 

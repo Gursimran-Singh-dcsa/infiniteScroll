@@ -9,7 +9,8 @@ const reducer = (state = initialState, action) => {
   const newState = { ...state };
   switch (action.type) {
     case 'loginButtonClicked':
-      newState.loggedIn = !newState.loggedIn;
+      newState.loggedIn = false;
+      newState.user = {};
       break;
     case 'registerUser':
       newState.user = action.value;

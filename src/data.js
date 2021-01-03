@@ -12,6 +12,16 @@ export const userInputFields = [
     "placeHolder": "please enter your email"
   },
   {
+    "name": "password",
+    "type": "password",
+    "placeHolder": "please enter your password"
+  },
+  {
+    "name": "confirmPassword",
+    "type": "password",
+    "placeHolder": "please reenter your password"
+  },
+  {
     "name": "dob",
     "type": "date",
     "placeHolder": "please enter your dae of birth",
