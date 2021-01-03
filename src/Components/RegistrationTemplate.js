@@ -2,10 +2,12 @@ import {useDispatch} from 'react-redux';
 import {useState} from 'react';
 import {userInputFields} from '../data';
 
-const LoginTemplate = () => {
+const RegistrationTemplate = () => {
   const [userData, setUserData] = useState({
     name: '',
     email: '',
+    password: '',
+    confirmPassword: '',
     dob: '',
     image: '',
     accepted: false,
@@ -41,6 +43,8 @@ const LoginTemplate = () => {
       case 'name':
       case 'email':
       case 'dob':
+      case 'password':
+      case 'confirmPassword':
         setUserData({...userData, [e.target.name]: e.target.value})
         break;
       case 'accepted':
@@ -76,7 +80,7 @@ const validate = ({type, value}) => {
           return false;
         }
         if (!(/^[A-Za-z\s]+$/.test(value))) {
-          setErrorMessages({...errorMessages, [type]: 'Please enter a valid name'})
+          setErrorMessages({...errorMessages, [type]: 'Please enter a valid name'});
           return false;
         }
         return true;
@@ -86,12 +90,37 @@ const validate = ({type, value}) => {
           return false;
         }
         return true;
-      case 'accepted': 
+      case 'accepted':
+        setError({...errors, [type]: value})
         if (!value) {
           setErrorMessages({...errorMessages, [type]: 'please accept Terms and Conditions'});
           return false;
         }
         return true;
+      case 'password':
+        if (null == value) {
+          setErrorMessages({...errorMessages, [type]: 'password cannot be empty'});
+          return false;
+        }
+        if (3 > value.length) {
+          setErrorMessages({...errorMessages, [type]: 'password must be larger than 3 chars'});
+          return false;
+        }
+        if (15 < value.length) {
+          setErrorMessages({...errorMessages, [type]: 'password must be less than 15 chars'})
+          return false;
+        }
+        if (value.includes(" ")) {
+          setErrorMessages({...errorMessages, [type]: 'password must not contain space'})
+          return false;
+        }
+        return true;
+        case 'confirmPassword':
+          if (value != userData.password) {
+            setErrorMessages({...errorMessages, [type]: 'passwords must be equal'})
+            return false;
+          }
+          return true;
     }
     return true;
   }
@@ -148,4 +177,4 @@ const validate = ({type, value}) => {
   )
 }
 
-export default LoginTemplate;
+export default RegistrationTemplate;
